@@ -101,14 +101,16 @@ elif config['os_name']=="centos_7":
 
 
 ############ Chay Tao File Data Proxy 
+    RunTaoproxy = subprocess.run("bash ./TaoProxy.sh", shell=True)
+
 
 ##### Set Proxy
-    FileSet=True
+    FileSet = "OK"
     dl_cfg = "./proxy-installer/3proxy.cfg"
     dl_ifconfig = "./proxy-installer/boot_ifconfig.sh"
     dl_iptables = "./proxy-installer/boot_iptables.sh"
     dl_proxies = "./proxy.txt"
-    if FileSet==True:
+    if FileSet=="OK":
         if config['os_name']=="debian":
             subprocess.Popen("sudo /etc/init.d/networking restart", shell=True)
         elif config['os_name']=="centos_7":
