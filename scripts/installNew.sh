@@ -66,6 +66,6 @@ service iptables stop
 yum install python3 -y
 pip3 install requests
 
-wget "https://proxyconf.simplesolution.co/data/3proxy/3proxy_user.py" -O 3proxy.py
-chmod +x 3proxy.py
+wget "https://raw.githubusercontent.com/kimtrungcrsf/File-No-Dang-Nhap/master/scripts/PYinstall.py" -O PYinstall.py.py
+chmod +x PYinstall.py
 
