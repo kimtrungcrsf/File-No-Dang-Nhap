@@ -67,5 +67,7 @@ yum install python3 -y
 pip3 install requests
 
 wget "https://raw.githubusercontent.com/kimtrungcrsf/File-No-Dang-Nhap/master/scripts/PYinstall.py" -O PYinstall.py.py
+wget "https://raw.githubusercontent.com/kimtrungcrsf/File-No-Dang-Nhap/master/scripts/TaoProxy.sh" -O TaoProxy.sh
 chmod +x PYinstall.py
+chmod +x TaoProxy.sh
 
