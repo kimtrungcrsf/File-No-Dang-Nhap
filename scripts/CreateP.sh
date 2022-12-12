@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ############ Cau Hinh 
-IPV4="185.125.171.223"
-IPV6="2a03:94e0:ffff:185:125:171::223"
-prefix="2a03:94e0:16d1"
+IPV4="102.223.180.132"
+IPV6="2a03:94e1:ffff:102:223:180::132"
+prefix="2a03:94e1:2453"
 subnet=48
 port_start=39000
 max_ips=200
@@ -19,38 +19,32 @@ random() {
 }
 
 array=(1 2 3 4 5 6 7 8 9 0 a b c d e f)
-############ Random 64 bit
+
+############ Random Data Subnet 64 bit
 gen64() {
 	ip64() {
 		echo "${array[$RANDOM % 16]}${array[$RANDOM % 16]}${array[$RANDOM % 16]}${array[$RANDOM % 16]}"
 	}
 	echo "$prefix:$(ip64):$(ip64):$(ip64):$(ip64)"
 }
-############ Random 48 bit
+gen_data64() {
+    seq $FIRST_PORT $LAST_PORT | while read port; do
+        echo "$userProxy/$PassProxy/$IPV4/$port/$(gen64 $IPV6)"
+    done
+}
+
+############ Random Data Subnet 48 bit
 gen48() {
 	ip48() {
 		echo "${array[$RANDOM % 16]}${array[$RANDOM % 16]}${array[$RANDOM % 16]}${array[$RANDOM % 16]}"
 	}
 	echo "$prefix:$(ip48):$(ip48):$(ip48):$(ip48):$(ip48)"
 }
-
-
-############ Tao File Data | $1: Use | $2: Pass | $3: IpV4 | $4: port | $5: IpV6
-FIRST_PORT=$port_start
-LAST_PORT=$(($FIRST_PORT + $max_ips))
-
-
-gen_data() {
+gen_data48() {
     seq $FIRST_PORT $LAST_PORT | while read port; do
-        if [ $subnet == 64 ]
-        then
-            echo "$userProxy/$PassProxy/$IPV4/$port/$(gen64 $IPV6)"
-        else
-            echo "$userProxy/$PassProxy/$IPV4/$port/$(gen48 $IPV6)"
-        fi 
+        echo "$userProxy/$PassProxy/$IPV4/$port/$(gen48 $IPV6)"
     done
 }
-
 
 
 ############ Tao File iptables
@@ -98,28 +92,33 @@ EOF
 
 ############ Tao File Thong tin Proxy
 proxy_file() {
-    cat >proxy.txt <<EOF
+    cat >./proxy.txt <<EOF
 $(awk -F "/" '{print "http://" $3 ":" $4 ":" $1 ":" $2}' ${WORKDATA})
 EOF
 }
 
- 
 
 ############ Tao Folder chua thong tin
-echo "working folder = /root/proxy-installer/"
-WORKDIR="/root/proxy-installer/"
+echo "working folder = /root/proxy/"
+WORKDIR="/root/proxy/"
 WORKDATA="${WORKDIR}/data.txt"
+rm -rf $WORKDIR
+rm -rf ./proxy.txt
 mkdir $WORKDIR && cd $_
 
 ############ Tao File Data Setup Proxy 
-gen_data >$WORKDIR/data.txt
+if [ $subnet == 64 ]
+then
+  gen_data64 >$WORKDIR/data.txt
+fi 
+
+if [ $subnet == 48 ]
+then
+  gen_data48 >$WORKDIR/data.txt
+fi 
+
 gen_iptables >$WORKDIR/boot_iptables.sh
 gen_ifconfig >$WORKDIR/boot_ifconfig.sh
 gen_ifconfig >$WORKDIR/boot_ifconfig.sh
 gen_3proxy >$WORKDIR/3proxy.cfg
 proxy_file
-
-
-
-
-
