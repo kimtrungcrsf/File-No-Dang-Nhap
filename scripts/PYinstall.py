@@ -120,9 +120,9 @@ elif config['os_name']=="centos_7":
         time.sleep(5)
         #set_ulimit()
         ###
-        subprocess.Popen("bash $dl_ifconfig", shell=True)
+        subprocess.Popen("bash './proxy-installer/boot_ifconfig.sh'", shell=True)
         subprocess.Popen("killall 3proxy", shell=True)
-        shutil.copyfile($dl_cfg, '/etc/3proxy/3proxy.cfg')
+        shutil.copyfile('./proxy-installer/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
         time.sleep(1)
         ###
         if config['os_name']=="debian":
