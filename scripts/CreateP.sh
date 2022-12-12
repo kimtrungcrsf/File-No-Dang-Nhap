@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ############ Cau Hinh 
 IPV4="102.223.180.139"
 IPV6="2a03:94e1:ffff:102:223:180::139"
@@ -13,7 +12,7 @@ TypeProxy="http://"
 userProxy="trungle"
 PassProxy="123123"
 
-############ Tao Thong Port
+############ Tao Thong tin Port
 FIRST_PORT=$port_start
 LAST_PORT=$(($FIRST_PORT + ($max_ips - 1)))
 
