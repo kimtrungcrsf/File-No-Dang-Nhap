@@ -13,11 +13,14 @@ TypeProxy="http://"
 userProxy="trungle"
 PassProxy="123123"
 
+############ Tao Thong on post
+FIRST_PORT=$port_start
+LAST_PORT=$(($FIRST_PORT + ($max_ips - 1)))
+
 random() {
 	tr </dev/urandom -dc A-Za-z0-9 | head -c5
 	echo
 }
-
 array=(1 2 3 4 5 6 7 8 9 0 a b c d e f)
 
 ############ Random Data Subnet 64 bit
@@ -89,10 +92,9 @@ EOF
 }
 
 
-
 ############ Tao File Thong tin Proxy
 proxy_file() {
-    cat >./proxy.txt <<EOF
+    cat <<EOF
 $(awk -F "/" '{print "http://" $3 ":" $4 ":" $1 ":" $2}' ${WORKDATA})
 EOF
 }
@@ -103,7 +105,6 @@ echo "working folder = /root/proxy/"
 WORKDIR="/root/proxy/"
 WORKDATA="${WORKDIR}/data.txt"
 rm -rf $WORKDIR
-rm -rf ./proxy.txt
 mkdir $WORKDIR && cd $_
 
 ############ Tao File Data Setup Proxy 
@@ -121,4 +122,4 @@ gen_iptables >$WORKDIR/boot_iptables.sh
 gen_ifconfig >$WORKDIR/boot_ifconfig.sh
 gen_ifconfig >$WORKDIR/boot_ifconfig.sh
 gen_3proxy >$WORKDIR/3proxy.cfg
-proxy_file
+proxy_file >$WORKDIR/proxy.txt
