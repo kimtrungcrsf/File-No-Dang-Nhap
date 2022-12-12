@@ -101,8 +101,8 @@ elif config['os_name']=="centos_7":
 
 
 ############ Chay Tao File Data Proxy 
-    subprocess.run("bash CreateP.sh", shell=True)
-    time.sleep(5)
+    subprocess.run("bash './CreateP.sh'", shell=True)
+    time.sleep(2)
 
 ##### Set Proxy
     FileSet = "OK"
