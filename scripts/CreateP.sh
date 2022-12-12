@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ############ Cau Hinh 
-IPV4="102.223.180.132"
-IPV6="2a03:94e1:ffff:102:223:180::132"
-prefix="2a03:94e1:2453"
+IPV4="102.223.180.139"
+IPV6="2a03:94e1:ffff:102:223:180::139"
+prefix="2a03:94e1:245a"
 subnet=48
 port_start=39000
 max_ips=200
@@ -13,14 +13,16 @@ TypeProxy="http://"
 userProxy="trungle"
 PassProxy="123123"
 
-############ Tao Thong on post
+############ Tao Thong Port
 FIRST_PORT=$port_start
 LAST_PORT=$(($FIRST_PORT + ($max_ips - 1)))
 
+############ Random IP6
 random() {
 	tr </dev/urandom -dc A-Za-z0-9 | head -c5
 	echo
 }
+
 array=(1 2 3 4 5 6 7 8 9 0 a b c d e f)
 
 ############ Random Data Subnet 64 bit
