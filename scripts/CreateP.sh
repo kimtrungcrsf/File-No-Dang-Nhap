@@ -17,12 +17,11 @@ PassProxy="123123"
 FIRST_PORT=$port_start
 LAST_PORT=$(($FIRST_PORT + ($max_ips - 1)))
 
-############ Random IP6
+############ Random
 random() {
 	tr </dev/urandom -dc A-Za-z0-9 | head -c5
 	echo
 }
-
 array=(1 2 3 4 5 6 7 8 9 0 a b c d e f)
 
 ############ Random Data Subnet 64 bit
