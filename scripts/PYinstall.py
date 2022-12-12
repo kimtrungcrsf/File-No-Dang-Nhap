@@ -106,9 +106,9 @@ elif config['os_name']=="centos_7":
 
 ##### Set Proxy
     FileSet = "OK"
-    dl_cfg = "./proxy-installer/3proxy.cfg"
-    dl_ifconfig = "./proxy-installer/boot_ifconfig.sh"
-    dl_iptables = "./proxy-installer/boot_iptables.sh"
+    dl_cfg = "./proxy/3proxy.cfg"
+    dl_ifconfig = "./proxy/boot_ifconfig.sh"
+    dl_iptables = "./proxy/boot_iptables.sh"
     dl_proxies = "./proxy.txt"
     if FileSet=="OK":
         if config['os_name']=="debian":
@@ -120,9 +120,9 @@ elif config['os_name']=="centos_7":
         time.sleep(5)
         #set_ulimit()
         ###
-        subprocess.Popen("bash './proxy-installer/boot_ifconfig.sh'", shell=True)
+        subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
         subprocess.Popen("killall 3proxy", shell=True)
-        shutil.copyfile('./proxy-installer/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
+        shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
         time.sleep(1)
         ###
         if config['os_name']=="debian":
