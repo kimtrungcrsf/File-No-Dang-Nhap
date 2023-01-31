@@ -131,3 +131,6 @@ gen_ifconfig >$WORKDIR/boot_ifconfig.sh
 gen_3proxy >$WORKDIR/3proxy.cfg
 proxy_file >$WORKDIR/proxy.txt
 proxy_Check >$WORKDIR/checkProxy.sh
+chmod 777 $WORKDIR/boot_iptables.sh
+chmod 777 $WORKDIR/boot_ifconfig.sh
+chmod 777 $WORKDIR/checkProxy.sh
