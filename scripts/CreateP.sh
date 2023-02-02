@@ -3,7 +3,7 @@
 IPV4="102.223.180.86"
 IPV6="2a03:94e1:ffff:102:223:180::86"
 prefix="2a03:94e1:244f"
-subnet=48
+subnet=64
 port_start=39000
 max_ips=350
 os_name="centos_7"
