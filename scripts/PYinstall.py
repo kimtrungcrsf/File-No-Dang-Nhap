@@ -98,10 +98,6 @@ config = {
 ### Tao File Data Proxy 
 subprocess.run("bash './CreateP.sh'", shell=True)
 
-     
-set_ulimit()
-
-
 ### Check trang thai proxy      
 CheckProxy = subprocess.Popen("bash './proxy/checkProxy.sh'", shell=True, stdout=subprocess.PIPE).stdout.read()
 CheckProxy = CheckProxy.strip().decode('UTF-8')
