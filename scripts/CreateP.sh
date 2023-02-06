@@ -127,7 +127,6 @@ fi
 
 gen_iptables >$WORKDIR/boot_iptables.sh
 gen_ifconfig >$WORKDIR/boot_ifconfig.sh
-gen_ifconfig >$WORKDIR/boot_ifconfig.sh
 gen_3proxy >$WORKDIR/3proxy.cfg
 proxy_file >$WORKDIR/proxy.txt
 proxy_Check >$WORKDIR/checkProxy.sh
