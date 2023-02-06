@@ -1,11 +1,11 @@
 #!/bin/bash
 ############ Cau Hinh 
-IPV4="102.223.180.86"
-IPV6="2a03:94e1:ffff:102:223:180::86"
-prefix="2a03:94e1:244f"
-subnet=64
+IPV4="102.223.180.132"
+IPV6="2a03:94e1:ffff:102:223:180::132"
+prefix="2a03:94e1:2453"
+subnet=48
 port_start=39000
-max_ips=350
+max_ips=100
 os_name="centos_7"
 inet6="eth0"
 TypeProxy="http://"
@@ -133,3 +133,4 @@ proxy_Check >$WORKDIR/checkProxy.sh
 chmod 777 $WORKDIR/boot_iptables.sh
 chmod 777 $WORKDIR/boot_ifconfig.sh
 chmod 777 $WORKDIR/checkProxy.sh
+chmod 777 /etc/3proxy/3proxy.cfg
