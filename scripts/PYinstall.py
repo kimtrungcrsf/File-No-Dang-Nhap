@@ -85,8 +85,6 @@ def set_ulimit():
         time.sleep(1)
     return ulimit
 
-
- 
 ##### Cau Hinh Tai Day #####
 IPV4 = get_ipv4()
 config = {
@@ -94,6 +92,8 @@ config = {
     'inet6': "eth0"
 }
 
+
+set_ulimit()
 
 ### Tao File Data Proxy 
 subprocess.run("bash './CreateP.sh'", shell=True)
@@ -111,6 +111,9 @@ if TrangThai_Proxy =="DOI_IP":
 
     print("Tien hanh Doi IP Proxy")
     ### Set Proxy
+    os.system("service iptables stop")
+    os.system("systemctl stop firewalld")
+    time.sleep(2)
     subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
     subprocess.Popen("killall 3proxy", shell=True)
     shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
@@ -134,8 +137,6 @@ else:
         os.system("systemctl stop firewalld")
         
     time.sleep(3)
-         
-    set_ulimit()
         
     ### Set Proxy
     subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
