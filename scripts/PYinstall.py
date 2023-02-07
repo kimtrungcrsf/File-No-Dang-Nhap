@@ -59,7 +59,7 @@ def get_ipv4():
     except Exception as err:
         print(err)
         exit()
-
+        
 #GET IPV6
 def get_ipv6():
     try:
@@ -86,12 +86,11 @@ def set_ulimit():
     return ulimit
 
 ##### Cau Hinh Tai Day #####
-IPV4 = get_ipv4()
+#IPV4 = get_ipv4()
 config = {
     'os_name': "centos_7",
     'inet6': "eth0"
 }
-
 
 set_ulimit()
 
@@ -108,36 +107,32 @@ else:
     
 ### Thuc Hien Set Proxy     
 if TrangThai_Proxy =="DOI_IP":
-
+    
     print("Tien hanh Doi IP Proxy")
     ### Set Proxy
     os.system("service iptables stop")
     os.system("systemctl stop firewalld")
     time.sleep(2)
     subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
-    subprocess.Popen("killall 3proxy", shell=True)
+    subprocess.Popen("/etc/init.d/3proxy stop", shell=True)
     shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
     time.sleep(1)
         
     ### Khoi Dong 3Proxy
-    if config['os_name']=="debian":
-        subprocess.Popen("sudo /etc/init.d/3proxy start", shell=True)
-    elif config['os_name']=="centos_7":
-        subprocess.Popen("service 3proxy start", shell=True)
-        
+    subprocess.Popen("/etc/init.d/3proxy start", shell=True)    
+    
 else:
-
-    print("Tien hanh Set Proxy")
+    
+    print("Tien hanh Set Proxy")   
     
     if config['os_name']=="debian":
         subprocess.Popen("sudo /etc/init.d/networking restart", shell=True)
     elif config['os_name']=="centos_7":
         os.system("service network restart")
         os.system("service iptables stop")
-        os.system("systemctl stop firewalld")
-        
+        os.system("systemctl stop firewalld")        
     time.sleep(3)
-        
+       
     ### Set Proxy
     subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
     subprocess.Popen("killall 3proxy", shell=True)
