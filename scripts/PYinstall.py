@@ -137,6 +137,7 @@ else:
     subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
     subprocess.Popen("killall 3proxy", shell=True)
     shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
+    
     time.sleep(1)
         
     ### Khoi Dong 3Proxy
