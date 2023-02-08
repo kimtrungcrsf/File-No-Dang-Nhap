@@ -112,14 +112,17 @@ if TrangThai_Proxy =="DOI_IP":
     ### Set Proxy
     os.system("service iptables stop")
     os.system("systemctl stop firewalld")
-    time.sleep(2)
-    subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
-    subprocess.Popen("/etc/init.d/3proxy stop", shell=True)
-    shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
     time.sleep(1)
+    subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
+    subprocess.Popen("killall 3proxy", shell=True)
+    shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
+    time.sleep(2)
         
     ### Khoi Dong 3Proxy
-    subprocess.Popen("/etc/init.d/3proxy start", shell=True)    
+    if config['os_name']=="debian":
+        subprocess.Popen("sudo /etc/init.d/3proxy start", shell=True)
+    elif config['os_name']=="centos_7":
+        subprocess.Popen("service 3proxy start", shell=True)  
     
 else:
     
@@ -131,14 +134,14 @@ else:
         os.system("service network restart")
         os.system("service iptables stop")
         os.system("systemctl stop firewalld")        
-    time.sleep(3)
+    time.sleep(1)
        
     ### Set Proxy
     subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
     subprocess.Popen("killall 3proxy", shell=True)
     shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
     
-    time.sleep(1)
+    time.sleep(2)
         
     ### Khoi Dong 3Proxy
     if config['os_name']=="debian":
@@ -146,7 +149,7 @@ else:
     elif config['os_name']=="centos_7":
         subprocess.Popen("service 3proxy start", shell=True)
         
-time.sleep(10)   
+time.sleep(30)   
 
 ### Check IPV6      
 CheckIPV6 = subprocess.Popen("bash './proxy/checkProxy.sh'", shell=True, stdout=subprocess.PIPE).stdout.read()
