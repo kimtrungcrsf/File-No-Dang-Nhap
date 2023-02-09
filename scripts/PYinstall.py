@@ -118,7 +118,7 @@ if config['os_name']=="debian":
 elif config['os_name']=="centos_7":
     subprocess.Popen("service 3proxy start", shell=True)
     
-time.sleep(30)
+time.sleep(20)
 
 ### Check IPV6      
 CheckIPV6 = subprocess.Popen("bash './proxy/checkProxy.sh'", shell=True, stdout=subprocess.PIPE).stdout.read()
