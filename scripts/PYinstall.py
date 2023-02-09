@@ -118,7 +118,7 @@ if config['os_name']=="debian":
 elif config['os_name']=="centos_7":
     subprocess.Popen("service 3proxy start", shell=True)
     
-time.sleep(20)
+time.sleep(30)
 
 ### Check IPV6      
 CheckIPV6 = subprocess.Popen("bash './proxy/checkProxy.sh'", shell=True, stdout=subprocess.PIPE).stdout.read()
@@ -127,4 +127,4 @@ if CheckIPV6=="200":
   print("Proxy Hoat Dong")
 else:
   print("Proxy Khong Hoat Dong")
-  exec(open('PYinstall.py').read())
+  subprocess.Popen("python3 /root/PYinstall.py", shell=True)
