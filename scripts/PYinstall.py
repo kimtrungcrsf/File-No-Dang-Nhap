@@ -86,7 +86,7 @@ def set_ulimit():
     return ulimit
 
 ##### Cau Hinh Tai Day #####
-#IPV4 = get_ipv4()
+IPV4 = get_ipv4()
 config = {
     'os_name': "centos_7",
     'inet6': "eth0"
