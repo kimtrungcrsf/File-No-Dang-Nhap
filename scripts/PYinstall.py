@@ -86,7 +86,7 @@ def set_ulimit():
     return ulimit
 
 ##### Cau Hinh Tai Day #####
-IPV4 = get_ipv4()
+#IPV4 = get_ipv4()
 config = {
     'os_name': "centos_7",
     'inet6': "eth0"
@@ -156,7 +156,7 @@ else:
         elif config['os_name']=="centos_7":
             subprocess.Popen("service 3proxy start", shell=True)
         
-time.sleep(30)   
+time.sleep(50)   
 
 ### Check IPV6      
 CheckIPV6 = subprocess.Popen("bash './proxy/checkProxy.sh'", shell=True, stdout=subprocess.PIPE).stdout.read()
