@@ -115,8 +115,8 @@ if TrangThai_Proxy =="DOI_IP":
             os.system("service network restart")
         
         ### Set Proxy
-        subprocess.Popen("killall 3proxy", shell=True)
         subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
+        subprocess.Popen("killall 3proxy", shell=True)
         shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
         time.sleep(3)
         
@@ -146,6 +146,7 @@ else:
             
         ### Set Proxy
         subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
+        subprocess.Popen("bash './proxy/boot_iptables.sh'", shell=True)
         subprocess.Popen("killall 3proxy", shell=True)
         shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
         time.sleep(3)
