@@ -112,19 +112,19 @@ if TrangThai_Proxy =="DOI_IP":
         if config['os_name']=="debian":
             subprocess.Popen("sudo /etc/init.d/networking restart", shell=True)
         elif config['os_name']=="centos_7":
-            os.system("service network restart")
+            os.system("sudo service network restart")
         
         ### Set Proxy
         subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
-        subprocess.Popen("killall 3proxy", shell=True)
+        subprocess.Popen("sudo killall 3proxy", shell=True)
         shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
-        time.sleep(3)
         
         ### Khoi Dong 3Proxy
         if config['os_name']=="debian":
             subprocess.Popen("sudo /etc/init.d/3proxy start", shell=True)
         elif config['os_name']=="centos_7":
-            subprocess.Popen("service 3proxy start", shell=True)  
+            os.system("sudo systemctl stop firewalld")
+            subprocess.Popen("sudo service 3proxy start", shell=True)  
     
 else:
     
@@ -137,9 +137,9 @@ else:
         if config['os_name']=="debian":
             subprocess.Popen("sudo /etc/init.d/networking restart", shell=True)
         elif config['os_name']=="centos_7":
-            os.system("service network restart")
-            os.system("service iptables stop")
-            os.system("systemctl stop firewalld")
+            os.system("sudo service network restart")
+            os.system("sudo service iptables stop")
+            os.system("sudo systemctl stop firewalld")
             
         ### Set ulimit 
         set_ulimit()
@@ -147,7 +147,7 @@ else:
         ### Set Proxy
         subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
         subprocess.Popen("bash './proxy/boot_iptables.sh'", shell=True)
-        subprocess.Popen("killall 3proxy", shell=True)
+        subprocess.Popen("sudo killall 3proxy", shell=True)
         shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
         time.sleep(3)
             
@@ -155,7 +155,7 @@ else:
         if config['os_name']=="debian":
             subprocess.Popen("sudo /etc/init.d/3proxy start", shell=True)
         elif config['os_name']=="centos_7":
-            subprocess.Popen("service 3proxy start", shell=True)
+            subprocess.Popen("sudo service 3proxy start", shell=True)
         
 time.sleep(50)   
 
