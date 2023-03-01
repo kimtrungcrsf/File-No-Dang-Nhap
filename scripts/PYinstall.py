@@ -124,6 +124,7 @@ if TrangThai_Proxy =="DOI_IP":
             subprocess.Popen("sudo /etc/init.d/3proxy start", shell=True)
         elif config['os_name']=="centos_7":
             os.system("sudo systemctl stop firewalld")
+            os.system("sudo systemctl disable firewalld")
             subprocess.Popen("sudo service 3proxy start", shell=True)  
     
 else:
@@ -140,6 +141,7 @@ else:
             os.system("sudo service network restart")
             os.system("sudo service iptables stop")
             os.system("sudo systemctl stop firewalld")
+            os.system("sudo systemctl disable firewalld")
             
         ### Set ulimit 
         set_ulimit()
