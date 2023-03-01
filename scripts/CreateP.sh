@@ -3,9 +3,9 @@
 IPV4="102.223.180.132"
 IPV6="2a03:94e1:ffff:102:223:180::132"
 prefix="2a03:94e1:2453"
-subnet=64
+subnet=48
 port_start=39000
-max_ips=175
+max_ips=1000
 os_name="centos_7"
 inet6="eth0"
 TypeProxy="http://"
