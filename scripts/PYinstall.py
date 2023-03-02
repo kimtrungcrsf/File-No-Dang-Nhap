@@ -173,4 +173,4 @@ if CheckIPV6=="200":
   print("Proxy Hoat Dong")
 else:
   print("Proxy Khong Hoat Dong")
-  subprocess.Popen("python3 PYinstall.py", shell=True)
+  subprocess.Popen("sudo python3 PYinstall.py", shell=True)
