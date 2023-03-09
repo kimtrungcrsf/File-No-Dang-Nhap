@@ -108,18 +108,17 @@ if TrangThai_Proxy =="DOI_IP":
     
         print("Tien hanh Doi IP Proxy")
         
+        ### Set Proxy
+        subprocess.Popen("sudo killall 3proxy", shell=True)
+        time.sleep(2)
+        
         ### Khoi Dong Lai networking
         if config['os_name']=="debian":
             subprocess.Popen("sudo /etc/init.d/networking restart", shell=True)
         elif config['os_name']=="centos_7":
             os.system("sudo service network restart")
-            os.system("sudo systemctl stop firewalld")
-            os.system("sudo systemctl disable firewalld")
-            os.system("sudo systemctl unmask firewalld")
                     
         ### Set Proxy
-        subprocess.Popen("sudo killall 3proxy", shell=True)
-        time.sleep(2)
         subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
         shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
         
