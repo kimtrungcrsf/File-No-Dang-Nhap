@@ -154,7 +154,8 @@ else:
         if config['os_name']=="debian":
             subprocess.Popen("sudo /etc/init.d/3proxy start", shell=True)
         elif config['os_name']=="centos_7":
-            subprocess.Popen("service 3proxy start", shell=True)        
+            subprocess.Popen("service 3proxy start", shell=True)    
+            
 time.sleep(30)   
 
 ### Check IPV6      
