@@ -118,6 +118,9 @@ if TrangThai_Proxy =="DOI_IP":
         subprocess.Popen("sudo killall 3proxy", shell=True)
         subprocess.Popen("sudo ./proxy/boot_ifconfig.sh", shell=True)
         shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
+
+        ### Set ulimit 
+        set_ulimit()
         
         ### Khoi Dong 3Proxy
         if config['os_name']=="debian":
@@ -148,6 +151,7 @@ else:
         ### Set Proxy
         subprocess.Popen("sudo killall 3proxy", shell=True)
         subprocess.Popen("sudo ./proxy/boot_ifconfig.sh", shell=True)
+        subprocess.Popen("sudo ./proxy/boot_iptables.sh", shell=True)
         shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
         
         ### Khoi Dong 3Proxy
