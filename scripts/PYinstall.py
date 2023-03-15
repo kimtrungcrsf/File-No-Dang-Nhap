@@ -114,9 +114,6 @@ if TrangThai_Proxy =="DOI_IP":
         elif config['os_name']=="centos_7":
             os.system("service network restart")
             
-        ### Set ulimit 
-        set_ulimit()     
-        
         ### Set Proxy
         subprocess.Popen("killall 3proxy", shell=True)
         subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
@@ -131,9 +128,6 @@ if TrangThai_Proxy =="DOI_IP":
 else:
     
         print("Tien hanh Set Proxy")   
-    
-        ### Chay Tao File Data Proxy 
-        subprocess.run("bash './CreateP.sh'", shell=True)
 
         ### Khoi Dong Lai networking
         if config['os_name']=="debian":
