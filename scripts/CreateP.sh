@@ -1,8 +1,8 @@
 #!/bin/bash
 ############ Cau Hinh 
-IPV4="102.223.180.132"
-IPV6="2a03:94e1:ffff:102:223:180::132"
-prefix="2a03:94e1:2453"
+IPV4="198.74.54.162"
+IPV6="2600:3c02::f03c:93ff:fe10:d9e0"
+prefix="2600:3c02:e000:0449"
 subnet=64
 port_start=39000
 max_ips=175
@@ -102,14 +102,14 @@ EOF
 ############ Tao File check Proxy
 proxy_Check() {
     cat <<EOF
-curl -I -x http://$userProxy:$PassProxy@$IPV4:$port_start https://whatismyipaddress.com | grep HTTP/1.0 | cut -f2-2 -d' '
+curl -I -x http://$userProxy:$PassProxy@$IPV4:$LAST_PORT https://whatismyipaddress.com | grep HTTP/1.0 | cut -f2-2 -d' '
 EOF
 }
 
 
 ############ Tao Folder chua thong tin
-echo "working folder = /root/proxy/"
-WORKDIR="/root/proxy/"
+echo "working folder = /root/proxy"
+WORKDIR="/root/proxy"
 WORKDATA="${WORKDIR}/data.txt"
 rm -rf $WORKDIR
 mkdir $WORKDIR && cd $_
