@@ -113,7 +113,10 @@ if TrangThai_Proxy =="DOI_IP":
             subprocess.Popen("sudo /etc/init.d/networking restart", shell=True)
         elif config['os_name']=="centos_7":
             os.system("service network restart")
-                    
+            
+        ### Set ulimit 
+        set_ulimit()     
+        
         ### Set Proxy
         subprocess.Popen("killall 3proxy", shell=True)
         subprocess.Popen("bash './proxy/boot_ifconfig.sh'", shell=True)
