@@ -102,7 +102,7 @@ EOF
 ############ Tao File check Proxy
 proxy_Check() {
     cat <<EOF
-curl -I -x http://$userProxy:$PassProxy@$IPV4:$LAST_PORT https://whatismyipaddress.com | grep HTTP/1.0 | cut -f2-2 -d' '
+curl --max-time 20 -I -x http://$userProxy:$PassProxy@$IPV4:$LAST_PORT https://whatismyipaddress.com | grep HTTP/1.0 | cut -f2-2 -d' '
 EOF
 }
 
