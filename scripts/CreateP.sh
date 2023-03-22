@@ -95,14 +95,14 @@ EOF
 ############ Tao File Thong tin Proxy
 proxy_file() {
     cat <<EOF
-$(awk -F "/" '{print "http://" $3 ":" $4 ":" $1 ":" $2}' ${WORKDATA})
+$(awk -F "/" '{print $3 ":" $4 ":" $1 ":" $2}' ${WORKDATA})
 EOF
 }
 
 ############ Tao File check Proxy
 proxy_Check() {
     cat <<EOF
-curl --max-time 20 -I -x http://$userProxy:$PassProxy@$IPV4:$LAST_PORT https://whatismyipaddress.com | grep HTTP/1.0 | cut -f2-2 -d' '
+curl --max-time 10 -I -x http://$userProxy:$PassProxy@$IPV4:$LAST_PORT https://whatismyipaddress.com | grep HTTP/1.0 | cut -f2-2 -d' '
 EOF
 }
 
