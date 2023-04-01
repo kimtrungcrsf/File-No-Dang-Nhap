@@ -1,9 +1,9 @@
 #!/bin/bash
 ############ Cau Hinh 
-IPV4="198.74.54.162"
-IPV6="2600:3c02::f03c:93ff:fe10:d9e0"
-prefix="2600:3c02:e000:0449"
-subnet=64
+IPV4="45.88.201.236"
+IPV6="2a03:94e1:2291"
+prefix="2a03:94e1:2291"
+subnet=48
 port_start=39000
 max_ips=175
 os_name="centos_7"
@@ -71,11 +71,10 @@ gen_3proxy() {
     cat <<EOF
 daemon
 maxconn 3000
+nserver 9.9.9.9
 nserver 1.1.1.1
-nserver 1.0.0.1
-nserver 2606:4700:4700::1111
-nserver 2606:4700:4700::1001
 nscache 65536
+nscache6 65536
 timeouts 1 5 30 60 180 1800 15 60
 setgid 65535
 setuid 65535
@@ -85,7 +84,6 @@ flush
 users $userProxy:CL:$PassProxy
 auth strong cache
 allow $userProxy
-
 $(awk -F "/" '{print "proxy -6 -n -a -p" $4 " -i" $3 " -e" $5 ""}' ${WORKDATA})
 flush
 EOF
