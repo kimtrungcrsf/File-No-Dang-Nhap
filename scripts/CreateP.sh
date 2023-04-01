@@ -5,8 +5,8 @@ IPV6="2a03:94e1:2291"
 prefix="2a03:94e1:2291"
 subnet=48
 port_start=39000
-max_ips=175
-ProxyAuth="YES"
+max_ips=100
+ProxyAuth="NO"
 TypeProxy="http://"
 userProxy="trungle"
 PassProxy="123123"
@@ -67,10 +67,8 @@ EOF
 
 ############ Tao File 3proxy.cfg
 gen_3proxy() {
-
 if [ $ProxyAuth == YES ]
 then
-
 cat <<EOF
 daemon
 maxconn 3000
@@ -85,14 +83,11 @@ flush
     
 users $userProxy:CL:$PassProxy
 auth strong cache
-allow $userProxy
-flush
-    
+allow $userProxy   
 $(awk -F "/" '{print "proxy -6 -n -a -p" $4 " -i" $3 " -e" $5 ""}' ${WORKDATA})
+flush
 EOF
-
 else
-
 cat <<EOF
 daemon
 maxconn 3000
@@ -104,11 +99,10 @@ setgid 65535
 setuid 65535
 stacksize 6291456 
 flush
-    
 
 $(awk -F "/" '{print "proxy -6 -n -a -p" $4 " -i" $3 " -e" $5 ""}' ${WORKDATA})
+flush
 EOF
-
 fi
 }
 
@@ -141,17 +135,20 @@ EOF
 fi 
 }
 
+
 ############ Tao Folder chua thong tin
 WORKDIR="/root/proxy"
 WORKDATA="${WORKDIR}/data.txt"
 rm -rf $WORKDIR
 mkdir $WORKDIR && cd $_
 
+
 ############ Tao File Data Setup Proxy 
 if [ $subnet == 64 ]
 then
   gen_data64 >$WORKDIR/data.txt
 fi 
+
 
 if [ $subnet == 48 ]
 then
