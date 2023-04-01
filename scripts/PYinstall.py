@@ -107,27 +107,14 @@ if TrangThai_Proxy =="DOI_IP":
         
         ### Tao File Data Proxy 
         subprocess.run("sudo ./CreateP.sh", shell=True)
-
-        ### Khoi Dong Lai networking
-        if config['os_name']=="debian":
-            subprocess.Popen("sudo /etc/init.d/networking restart", shell=True)
-        elif config['os_name']=="centos_7":
-            os.system("service network restart")
                    
         ### Set Proxy
-        subprocess.Popen("sudo killall 3proxy", shell=True)
-        time.sleep(3) 
         subprocess.Popen("sudo ./proxy/boot_ifconfig.sh", shell=True)
-        shutil.copyfile('./proxy/3proxy.cfg', '/etc/3proxy/3proxy.cfg')
-
-        ### Set ulimit 
-        set_ulimit()
+        subprocess.Popen("sudo /etc/init.d/3proxy stop", shell=True)
+        subprocess.Popen("sudo cp ./proxy/3proxy.cfg /etc/3proxy/3proxy.cfg", shell=True)
         
         ### Khoi Dong 3Proxy
-        if config['os_name']=="debian":
-            subprocess.Popen("sudo /etc/init.d/3proxy start", shell=True)
-        elif config['os_name']=="centos_7":
-            subprocess.Popen("sudo service 3proxy start", shell=True)  
+        subprocess.Popen("sudo /etc/init.d/3proxy start", shell=True)  
     
 else:
     
@@ -170,4 +157,4 @@ if CheckIPV6=="200":
   print("Proxy Hoat Dong")
 else:
   print("Proxy Khong Hoat Dong")
-  subprocess.Popen("sudo python3 PYinstall.py", shell=True)
+  #subprocess.Popen("sudo python3 PYinstall.py", shell=True)
