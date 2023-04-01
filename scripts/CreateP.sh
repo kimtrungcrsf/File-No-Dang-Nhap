@@ -5,7 +5,7 @@ IPV6="2a03:94e1:2291"
 prefix="2a03:94e1:2291"
 subnet=48
 port_start=39000
-max_ips=175
+max_ips=100
 ProxyAuth="YES"
 TypeProxy="http://"
 userProxy="trungle"
@@ -112,18 +112,25 @@ EOF
 fi
 }
 
+
 ############ Tao File Thong tin Proxy
 proxy_file() {
-    cat <<EOF
+if [ $ProxyAuth == YES ]
+then
+cat <<EOF
 $(awk -F "/" '{print $3 ":" $4 ":" $1 ":" $2}' ${WORKDATA})
 EOF
+else
+cat <<EOF
+$(awk -F "/" '{print $3 ":" $4}' ${WORKDATA})
+EOF
+fi 
 }
 
 ############ Tao File check Proxy
 proxy_Check() {
 if [ $ProxyAuth == YES ]
 then
-
 cat <<EOF
 curl --max-time 10 -I -x http://$userProxy:$PassProxy@$IPV4:$LAST_PORT https://whatismyipaddress.com | grep HTTP/1.0 | cut -f2-2 -d' '
 EOF
@@ -131,7 +138,6 @@ else
 cat <<EOF
 curl --max-time 10 -I -x http://$IPV4:$LAST_PORT https://whatismyipaddress.com | grep HTTP/1.0 | cut -f2-2 -d' '
 EOF
-
 fi 
 }
 
