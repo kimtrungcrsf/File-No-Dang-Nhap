@@ -13,9 +13,11 @@ PassProxy="123123"
 os_name="centos_7"
 inet6="eth0"
 
+
 ############ Tao Thong tin Port
 FIRST_PORT=$port_start
 LAST_PORT=$(($FIRST_PORT + ($max_ips - 1)))
+
 
 ############ Random
 random() {
@@ -72,9 +74,15 @@ then
 cat <<EOF
 daemon
 maxconn 3000
-nserver 9.9.9.9
 nserver 1.1.1.1
+nserver 1.0.0.1
+nserver 8.8.8.8
+nserver 8.8.4.4
+nserver 9.9.9.9
+nserver 2606:4700:4700::1111
+nserver 2606:4700:4700::1001
 nscache 65536
+nscache6 65536
 timeouts 1 5 30 60 180 1800 15 60
 setgid 65535
 setuid 65535
@@ -91,9 +99,15 @@ else
 cat <<EOF
 daemon
 maxconn 3000
-nserver 9.9.9.9
 nserver 1.1.1.1
+nserver 1.0.0.1
+nserver 8.8.8.8
+nserver 8.8.4.4
+nserver 9.9.9.9
+nserver 2606:4700:4700::1111
+nserver 2606:4700:4700::1001
 nscache 65536
+nscache6 65536
 timeouts 1 5 30 60 180 1800 15 60
 setgid 65535
 setuid 65535
