@@ -1,7 +1,6 @@
 #!/bin/bash
 ############ Cau Hinh 
 IPV4="45.88.201.236"
-IPV6="2a03:94e1:2291"
 prefix="2a03:94e1:2291"
 subnet=48
 port_start=39000
