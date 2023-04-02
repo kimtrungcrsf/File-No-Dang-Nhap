@@ -1,8 +1,8 @@
 #!/bin/bash
 ############ Cau Hinh 
-IPV4="45.88.201.236"
-prefix="2a03:94e1:2291"
-subnet=48
+IPV4="139.144.11.212"
+prefix="2400:8904:e001:15c"
+subnet=64
 port_start=39000
 max_ips=175
 ProxyAuth="YES"
@@ -51,7 +51,6 @@ gen_data48() {
     done
 }
 
-
 ############ Tao File iptables
 gen_iptables() {
     cat <<EOF
@@ -74,13 +73,8 @@ then
 cat <<EOF
 daemon
 maxconn 3000
-nserver 1.1.1.1
-nserver 1.0.0.1
-nserver 8.8.8.8
-nserver 8.8.4.4
 nserver 9.9.9.9
-nserver 2606:4700:4700::1111
-nserver 2606:4700:4700::1001
+nserver 1.1.1.1
 nscache 65536
 nscache6 65536
 timeouts 1 5 30 60 180 1800 15 60
@@ -99,13 +93,8 @@ else
 cat <<EOF
 daemon
 maxconn 3000
-nserver 1.1.1.1
-nserver 1.0.0.1
-nserver 8.8.8.8
-nserver 8.8.4.4
 nserver 9.9.9.9
-nserver 2606:4700:4700::1111
-nserver 2606:4700:4700::1001
+nserver 1.1.1.1
 nscache 65536
 nscache6 65536
 timeouts 1 5 30 60 180 1800 15 60
