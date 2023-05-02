@@ -74,7 +74,7 @@ cat <<EOF
 daemon
 maxconn 3000
 nserver 9.9.9.9
-nserver 1.1.1.1
+nserver 149.112.112.112
 nscache 65536
 nscache6 65536
 timeouts 1 5 30 60 180 1800 15 60
@@ -94,7 +94,7 @@ cat <<EOF
 daemon
 maxconn 3000
 nserver 9.9.9.9
-nserver 1.1.1.1
+nserver 149.112.112.112
 nscache 65536
 nscache6 65536
 timeouts 1 5 30 60 180 1800 15 60
