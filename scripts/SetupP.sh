@@ -46,7 +46,7 @@ then
 	echo "IPV6: $IP4"
 else
     echo "[ERROR]: Kết nối IPv6 không hoạt động!"
-	exit 1
+	#exit 1
 fi
 #
 echo "installing 3proxy"
