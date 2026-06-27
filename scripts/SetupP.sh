@@ -1,9 +1,9 @@
 #!/bin/sh
-version="3proxy-0.9.4"
+version="0.9.4"
 install_3proxy() {
 	killall 3proxy
-	URL="https://github.com/kimtrungcrsf/File-No-Dang-Nhap/blob/master/scripts/${version}.tar.gz"
-	DIR_3PROXY="${version}"
+	URL="https://raw.githubusercontent.com/kimtrungcrsf/File-No-Dang-Nhap/refs/heads/master/scripts/3proxy-0.9.4.tar.gz"
+	DIR_3PROXY="3proxy-${version}"
 	wget -qO- $URL | bsdtar -xvf-
 	cd $DIR_3PROXY
 	make -f Makefile.Linux
