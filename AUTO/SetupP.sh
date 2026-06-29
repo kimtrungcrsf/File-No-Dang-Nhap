@@ -132,19 +132,19 @@ download_runtime_files_if_missing() {
 	if [ -f "${SCRIPT_DIR}/PYinstall.py" ]; then
 		cp "${SCRIPT_DIR}/PYinstall.py" /root/PYinstall.py
 	else
-		[ -f PYinstall.py ] || wget "https://raw.githubusercontent.com/kimtrungcrsf/File-No-Dang-Nhap/master/scripts/PYinstall.py" -O PYinstall.py
+		[ -f PYinstall.py ] || wget "https://raw.githubusercontent.com/kimtrungcrsf/File-No-Dang-Nhap/refs/heads/master/AUTO/PYinstall.py" -O PYinstall.py
 	fi
 
 	if [ -f "${SCRIPT_DIR}/CreateP.sh" ]; then
 		cp "${SCRIPT_DIR}/CreateP.sh" /root/CreateP.sh
 	else
-		[ -f CreateP.sh ] || wget "https://raw.githubusercontent.com/kimtrungcrsf/File-No-Dang-Nhap/master/scripts/CreateP.sh" -O CreateP.sh
+		[ -f CreateP.sh ] || wget "https://raw.githubusercontent.com/kimtrungcrsf/File-No-Dang-Nhap/refs/heads/master/AUTO/CreateP.sh" -O CreateP.sh
 	fi
 
 	if [ -f "${SCRIPT_DIR}/CheckProxy.py" ]; then
 		cp "${SCRIPT_DIR}/CheckProxy.py" /root/CheckProxy.py
 	else
-		[ -f CheckProxy.py ] || wget "https://raw.githubusercontent.com/kimtrungcrsf/File-No-Dang-Nhap/master/scripts/CheckProxy.py" -O CheckProxy.py
+		[ -f CheckProxy.py ] || wget "https://raw.githubusercontent.com/kimtrungcrsf/File-No-Dang-Nhap/refs/heads/master/AUTO/CheckProxy.py" -O CheckProxy.py
 	fi
 	chmod +x PYinstall.py CreateP.sh CheckProxy.py 2>/dev/null || true
 }
