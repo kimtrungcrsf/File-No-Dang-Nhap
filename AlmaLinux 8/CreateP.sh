@@ -1,13 +1,12 @@
 #!/bin/bash
 ############ Cau Hinh 
-IPV4="217.216.73.240"
-IPV6="2407:3640:2340:1118"
-prefix="2407:3640:2340:1118"
+IPV4=""
+IPV6=""
+prefix=""
 subnet=64
 port_start=39000
-max_ips=10
-os_name="centos_7"
-##os_name="debian"
+max_ips=100
+os_name="AlmaLinux8"
 inet6="eth0"
 TypeProxy="http://"
 userProxy="trungle"
